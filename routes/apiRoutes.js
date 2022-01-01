@@ -17,11 +17,31 @@ router.get('/notes', (req, res) => {
 
 router.post('/notes', (req, res) => {
     const note = {title: req.body.title, text: req.body.text, id: uuidv1()};
-    const response =  readAndAppend(note, 'db/db.json');
+    readAndAppend(note, 'db/db.json')
+    readFromFile('db/db.json')
+    .then((data) => JSON.parse(data))
+    .then((notes) => {
+        return res.json(notes);
+    })
+    .catch((err) => res.status(500).json(err))
+})
 
-    if(response.ok) {
-        window.location.reload();
-    }
+router.delete('/notes/:id', (req, res) => {
+    const id = req.params.id;
+
+    readFromFile('db/db.json')
+    .then((data) => JSON.parse(data))
+    .then((notes) => {
+        const filteredNotes = notes.filter((note) => note.id !== id)
+        writeToFile('db/db.json', filteredNotes)
+    })
+
+    readFromFile('db/db.json')
+    .then((data) => JSON.parse(data))
+    .then((notes) => {
+        return res.json(notes);
+    })
+    .catch((err) => res.status(500).json(err))
 })
 
 module.exports = router;
