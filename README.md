@@ -1,4 +1,4 @@
-Tutorial Video:https://drive.google.com/file/d/1GRkmOMiZm6apl5Puq_CnXUTkjIq2Chqs/preview
+Tutorial Video:https://watch.screencastify.com/v/dYqYlAKpzwDL0LZ7PW8X
 
 # Employee Model.Organizer ![License](https://img.shields.io/static/v1?label=License&message=MIT&color=BLUE)
 https://github.com/MaDavilaJr/Employee Model.Organizer
